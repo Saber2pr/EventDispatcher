@@ -8,7 +8,7 @@
 
 using namespace std;
 /**
- * @brief The EventDispatcher class
+ * @brief The EventDispatcher class (Subscribe/Publish)
  * @infor: by saber2pr
  */
 class EventDispatcher
