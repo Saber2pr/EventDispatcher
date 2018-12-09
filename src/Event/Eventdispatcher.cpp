@@ -7,8 +7,8 @@ EventDispatcher::EventDispatcher()
 
 EventDispatcher::~EventDispatcher()
 {
-    delete EventDispatcher::_instance;
     this->_Listeners.clear();
+    delete EventDispatcher::_instance;
 }
 
 vector<int> EventDispatcher::FindEvent(string eventName){
