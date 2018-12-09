@@ -7,7 +7,10 @@
 #include<string.h>
 
 using namespace std;
-
+/**
+ * @brief The EventDispatcher class
+ * @infor: by saber2pr
+ */
 class EventDispatcher
 {
     typedef string Message;
@@ -19,20 +22,42 @@ private:
     static EventDispatcher* _instance;
 
     EventDispatcher();
-
+    /**
+     * @brief FindEvent
+     * @param eventName
+     * @return
+     */
     vector<int> FindEvent(string eventName);
-
+    /**
+     * @brief for_eachEvent
+     * @param Events
+     * @param callback
+     */
     void for_eachEvent(vector<int> Events,function<void(int)> callback);
 
 public:
     ~EventDispatcher();
-
+    /**
+     * @brief getInstance
+     * @return
+     */
     static EventDispatcher* getInstance();
-
+    /**
+     * @brief addEventListener
+     * @param eventName
+     * @param listener
+     */
     void addEventListener(string eventName ,Listener listener);
-
+    /**
+     * @brief removeEvent
+     * @param eventName
+     */
     void removeEvent(string eventName);
-
+    /**
+     * @brief dispatch
+     * @param eventName
+     * @param value
+     */
     void dispatch(string eventName,Message value = "__DEFAULT__");
 };
 
