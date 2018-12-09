@@ -1,4 +1,5 @@
 # EventDispatcher
+> Subscribe/Publish
 ```cpp
 void EventDispatcher::dispatch(string eventName, Message value){
     vector<int> Events = this->FindEvent(eventName);
