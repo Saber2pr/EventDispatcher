@@ -19,14 +19,17 @@ void listener3(string value){
 
 int main()
 {
-    EventDispatcher::getInstance()->addEventListener("haha1", listener1);
-    EventDispatcher::getInstance()->addEventListener("haha2", listener2);
-    EventDispatcher::getInstance()->addEventListener("haha3", listener3);
+    EventDispatcher::getInstance()->addEventListener(string("haha1"), listener1);
+    EventDispatcher::getInstance()->addEventListener(string("haha2"), listener2);
+    EventDispatcher::getInstance()->addEventListener(string("haha3"), listener3);
 
-    EventDispatcher::getInstance()->removeEvent("haha2");
+    EventDispatcher::getInstance()->removeEventListener("haha1");
+    //    EventDispatcher::getInstance()->removeEventListener("haha2");
+    //    EventDispatcher::getInstance()->removeEventListener("haha3");
 
-    EventDispatcher::getInstance()->dispatch("haha1", "hello");
-    EventDispatcher::getInstance()->dispatch("haha3");
+    EventDispatcher::getInstance()->dispatchEvent(string("haha1"), "hello");
+    EventDispatcher::getInstance()->dispatchEvent(string("haha2"), "hello");
+    EventDispatcher::getInstance()->dispatchEvent(string("haha3"));
 
     return 0;
 }

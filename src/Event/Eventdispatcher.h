@@ -1,41 +1,50 @@
-#ifndef EVENTDISPATCHER_H
-#define EVENTDISPATCHER_H
-
+#ifndef EVENTDISPATCH_H
+#define EVENTDISPATCH_H
 #include<functional>
 #include<vector>
 #include<algorithm>
-#include<string.h>
 
 using namespace std;
+
 /**
- * @brief The EventDispatcher class (Subscribe/Publish)
+ * @brief The EventDispatcher class
  * @infor: by saber2pr
  */
 class EventDispatcher
 {
-    typedef string Message;
-    typedef function<void(Message)> Listener;
-
 private:
-    vector<Listener> _Listeners;
-    vector<string> _EventList;
-    static EventDispatcher* _instance;
-
+    /**
+     * @brief _instance
+     */
+    static EventDispatcher *_instance;
+    /**
+     * @brief EventDispatcher
+     */
     EventDispatcher();
     /**
-     * @brief FindEvent
-     * @param eventName
-     * @return
+     * @brief Message
      */
-    vector<int> FindEvent(string eventName);
+    using Message = string;
     /**
-     * @brief for_eachEvent
-     * @param Events
-     * @param callback
+     * @brief Listener
      */
-    void for_eachEvent(vector<int> Events,function<void(int)> callback);
+    using Listener = function<void(Message)>;
+    /**
+     * @brief The Event struct
+     */
+    struct Event {
+        string name;
+        Listener listener;
+    };
+    /**
+     * @brief EventList
+     */
+    vector<Event> EventList;
 
 public:
+    /**
+     * @brief ~EventDispatcher
+     */
     ~EventDispatcher();
     /**
      * @brief getInstance
@@ -52,13 +61,13 @@ public:
      * @brief removeEvent
      * @param eventName
      */
-    void removeEvent(string eventName);
+    void removeEventListener(string eventName);
     /**
      * @brief dispatch
      * @param eventName
      * @param value
      */
-    void dispatch(string eventName,Message value = "__DEFAULT__");
+    void dispatchEvent(string eventName,Message value = "__DEFAULT__");
 };
 
-#endif // EVENTDISPATCHER_H
+#endif // EVENTDISPATCH_H
