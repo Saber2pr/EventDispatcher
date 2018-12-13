@@ -2,10 +2,16 @@
 > Subscribe/Publish
 
 ```cpp
-void EventDispatcher::dispatch(string eventName, Message value = "__DEFAULT__"){
-    vector<int> Events = this->FindEvent(eventName);
-    this->for_eachEvent(Events,[=](int index){
-        this->_Listeners[index](value);
+void EventDispatcher::removeEventListener(string eventName){
+    vector<Event> event_filtered(this->EventList.size());
+    auto end = copy_if(this->EventList.begin(), this->EventList.end(), event_filtered.begin(), [=](Event event_cur){
+        if(event_cur.name == eventName){
+            return false;
+        }else {
+            return true;
+        }
     });
+    event_filtered.resize(distance(event_filtered.begin(), end));
+    this->EventList = event_filtered;
 }
 ```
