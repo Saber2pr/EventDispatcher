@@ -1,4 +1,4 @@
-# EventDispatcher
+# EventDispatcher-cpp
 > Subscribe/Publish
 
 ```cpp
