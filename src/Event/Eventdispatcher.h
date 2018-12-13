@@ -56,18 +56,18 @@ public:
      * @param eventName
      * @param listener
      */
-    void addEventListener(string eventName ,Listener listener);
+    void addEventListener(string name ,Listener listener);
     /**
      * @brief removeEvent
      * @param eventName
      */
-    void removeEventListener(string eventName);
+    void removeEventListener(string name);
     /**
      * @brief dispatch
      * @param eventName
      * @param value
      */
-    void dispatchEvent(string eventName,Message value = "__DEFAULT__");
+    void dispatchEvent(string name,Message value = "__DEFAULT__");
 };
 
 #endif // EVENTDISPATCH_H
